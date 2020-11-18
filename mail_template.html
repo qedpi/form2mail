@@ -1,0 +1,46 @@
+<?
+let htmlElems = []
+?>
+<html>
+<head>
+</head>
+<body>
+<p>Hi <?= data.firstName ?>,</p>
+<p>Thank you for interviewing with Western Tech Alumni. I hope you found it useful! Here is the feedback from your mock interview:</p>
+
+<? for ([groupName, group] of Object.entries(data.categories)) { ?>
+<h4><?= groupName ?></h4>
+<ul>
+    <? for ([k, v] of Object.entries(group)){ ?>
+    <li><?= k ?>:
+        <? if (v === "Yes") { ?>
+        <b style="color: #00C851">Yes</b>
+        <? } else { ?>
+        <b style="color: #ff4444">No</b>
+        <? } ?>
+        <? } ?>
+</ul>
+<? } ?>
+
+<? for ([k, v] of Object.entries(data.extras)) { ?>
+<h4><?= k ?></h4>
+<? for (line of v.split('\n')) { ?>
+<?= line ?><br />
+<? } ?>
+<? } ?>
+
+<p><b>Recommend for referral?</b>
+    <? if (data.referral === "Yes") { ?>
+    <b style="color: #00C851">Yes</b>
+    <? } else { ?>
+    <b style="color: #ff4444">No</b>
+    <? } ?>
+</p>
+
+<p>Please reach out if you have any questions.</p>
+
+Duncan
+
+</body>
+
+</html>
